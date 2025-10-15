@@ -49,7 +49,6 @@ from config import (  # noqa: E402
 )
 from tools import (  # noqa: E402
     AnalyzeTool,
-    LookupTool,
     ChallengeTool,
     ChatTool,
     CLinkTool,
@@ -58,6 +57,7 @@ from tools import (  # noqa: E402
     DebugIssueTool,
     DocgenTool,
     ListModelsTool,
+    LookupTool,
     PlannerTool,
     PrecommitTool,
     RefactorTool,
@@ -395,7 +395,7 @@ def configure_providers():
     from providers.custom import CustomProvider
     from providers.dial import DIALModelProvider
     from providers.gemini import GeminiModelProvider
-    from providers.openai_provider import OpenAIModelProvider
+    from providers.openai import OpenAIModelProvider
     from providers.openrouter import OpenRouterProvider
     from providers.shared import ProviderType
     from providers.xai import XAIModelProvider
@@ -432,7 +432,7 @@ def configure_providers():
     azure_models_available = False
     if azure_key and azure_key != "your_azure_openai_key_here" and azure_endpoint:
         try:
-            from providers.azure_registry import AzureModelRegistry
+            from providers.registries.azure import AzureModelRegistry
 
             azure_registry = AzureModelRegistry()
             if azure_registry.list_models():

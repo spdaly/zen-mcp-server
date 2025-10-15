@@ -900,7 +900,7 @@ wheels = [
 
 [[package]]
 name = "zen-mcp-server"
-version = "5.11.0"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "google-genai" },
